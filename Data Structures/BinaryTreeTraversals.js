@@ -25,7 +25,6 @@ function main() {
    console.log("PRINTING POSTORDER");
    printPostorder(n);
    
-   
 } 
 
 main();
