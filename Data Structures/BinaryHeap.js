@@ -1,4 +1,4 @@
-//Set up the namespaces for the application
+//Set up the global namespace for the application
 var MYAPP = MYAPP || {};
 
 
