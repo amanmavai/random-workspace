@@ -47,6 +47,33 @@ MYAPP.ListApi = (function() {
         
         return;
     };
+    LinkedList.prototype.deleteNode = function(key) {
+        var temp = this.head, prev;
+        
+        // If head node itself holds the key to be deleted
+        if (temp != null && temp.data == key)
+        {
+            this.head = temp.next;   // Changed head
+            temp = null;             // free old head
+            return;
+        }
+        
+        // Search for the key to be deleted, keep track of the
+        // previous node as we need to change 'prev->next'
+        while (temp != null && temp.data != key)
+        {
+            prev = temp;
+            temp = temp.next;
+        }
+        
+        // If key was not present in linked list
+        if (temp == null) return;
+    
+        //If key was present then Unlink the node from linked list
+        prev.next = temp.next;
+     
+        temp = null;  // Free memory
+    };
     LinkedList.prototype.printList = function() {
           var currentNode = this.head;
           while (currentNode !== null)
@@ -73,9 +100,13 @@ function main() {
     list.addNodeAtEnd(10);
     list.addNodeAtEnd(15);
     list.addNodeAtFront(5);
+    list.addNodeAtFront(4);
     console.log("LINKED LIST::");
     list.printList();
-
+    
+    list.deleteNode(5);
+    console.log("AFTER DELETION::");
+    list.printList();
 }
 
 main();
